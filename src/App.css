@@ -76,3 +76,18 @@
 .facebook {
     background-color: rgb(57, 70, 187);
 }
+
+/* =================
+    Logout Button
+==================*/
+.btn {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: rgb(245, 134, 130);
+}
