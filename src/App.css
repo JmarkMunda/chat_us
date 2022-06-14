@@ -91,3 +91,29 @@
     color: #fff;
     background-color: rgb(245, 134, 130);
 }
+
+
+/* =================
+      MESSAGES
+==================*/
+.messages-container {
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 20px 40px;
+}
+
+.message-box {
+    display: flex;
+    align-items: center;
+    padding: 20px 10px 0 20px;
+}
+
+.message-box .sent {
+    float: right;
+    background-color: red;
+}   
+
+.message-box .received {
+    float: left;
+    background-color: green;
+}   
