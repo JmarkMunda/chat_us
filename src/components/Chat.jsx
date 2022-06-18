@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { auth, db } from "../firebase";
 import {
   collection,
-  getDocs,
   limit,
   onSnapshot,
   orderBy,
   query,
 } from "firebase/firestore";
-import LogOut from "./LogOut";
 import SendMessage from "./SendMessage";
+import NavBar from "./NavBar";
 
 const Chat = () => {
+  const scroll = useRef();
   const [messages, setMessages] = useState([]);
+
   useEffect(() => {
     const fetchMessages = () => {
       // Collection reference ============
@@ -32,25 +33,29 @@ const Chat = () => {
     fetchMessages();
   }, []);
 
-  console.log(messages);
   return (
     <div>
-      <h2>Chat Room</h2>
-      <LogOut />
+      {/* ========== Navbar =========== */}
+      <NavBar />
+      {/* ====== Message Box ======= */}
       <div className="messages-container">
         {messages.map(({ id, text, photoURL, uid }) => (
-          <div
-            key={id}
-            className={`message-box ${
-              id === auth.currentUser.uid ? "sent" : "received"
-            }`}>
-            <img src={photoURL} alt="" />
-            <p>{text}</p>
+          <div key={id}>
+            <div
+              className={`message-box ${
+                uid === auth.currentUser.uid ? "sent" : "received"
+              } `}>
+              <img src={photoURL} alt="" />
+              <p>{text}</p>
+            </div>
           </div>
         ))}
       </div>
 
-      <SendMessage />
+      {/* ===== Send Message ======= */}
+      <SendMessage scroll={scroll} />
+
+      <div ref={scroll}></div>
     </div>
   );
 };

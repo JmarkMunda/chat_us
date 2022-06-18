@@ -2,7 +2,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import React, { useState } from "react";
 import { auth, db } from "../firebase";
 
-const SendMessage = () => {
+const SendMessage = ({ scroll }) => {
   const [inputMessage, setInputMessage] = useState("");
 
   const sendMessage = async (e) => {
@@ -17,16 +17,21 @@ const SendMessage = () => {
       createdAt: serverTimestamp(),
     });
     setInputMessage("");
+    scroll.current.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <div>
       <form onSubmit={sendMessage}>
-        <input
-          placeholder="Type a message..."
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
-        />
-        <button type="submit">Send message</button>
+        <div className="send-message">
+          <input
+            placeholder="Type a message..."
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+          />
+          <button className="send-msg-btn" type="submit">
+            Send
+          </button>
+        </div>
       </form>
     </div>
   );
