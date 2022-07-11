@@ -1,5 +1,5 @@
 # "Chat Us" 🔥 
-👉 <a href="https://jmovies-trailers.netlify.app/">View website</a> :earth_asia:
+👉 <a href="https://chat-us-app.web.app/">View website</a> :earth_asia:
 
 This project was created using React JS and Firebase.
 
